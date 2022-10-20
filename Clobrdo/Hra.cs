@@ -15,7 +15,7 @@ namespace Clobrdo
 		{
 			if (hraci.Count < hraciDeska.MaximalniPocetHracu)
 			{
-				for (int i = 0; i < 1; i++)
+				for (int i = 0; i < 4; i++)
 				{
 					Figurka figurka = new Figurka($"{hrac.Jmeno[0]}{i + 1}");
 					hrac.PridejFigurku(figurka);
@@ -49,18 +49,23 @@ namespace Clobrdo
 				
 				foreach (var hrac in hraci)
 				{
-					Console.WriteLine($"Hraje hráč {hrac.Jmeno}");
+					Console.Write("Před hodem: ");
+					hraciDeska.Vypis();
 					int hod = kostka.Hod();
 
 					// TODO - Herní strategie - výběr figurky
-					Figurka figurka = hrac.Figurky.First();
+					// TODO - Vysrat se na to a použít random
+					int i = Random.Shared.Next(0, 3);
+					Figurka figurka = hrac.Figurky[i];
+					Console.WriteLine($"Hraje hráč {hrac.Jmeno} s figurkou " + (i + 1));
 					hraciDeska.PosunFigurku(figurka, hod);
 
+					Console.Write("Po hodu: ");
 					hraciDeska.Vypis();
 				}
 			}
 
-			Console.WriteLine("Konec všeho.");
+			Console.WriteLine("Konec všeho >:)");
 		}
 
 		private bool JeDohrano()

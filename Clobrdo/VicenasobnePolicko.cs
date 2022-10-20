@@ -9,6 +9,7 @@ namespace Clobrdo
 	public class VicenasobnePolicko : Policko
 	{
 		protected List<Figurka> figurky = new();
+		public List<Hrac> Hraci = new(); 
 
 		public override void PolozFigurku(Figurka figurka)
 		{
@@ -30,9 +31,13 @@ namespace Clobrdo
 			return null;
 		}
 
-		public override void ZvedniFigurku(Figurka figurka)
+		public override void ZvedniFigurku(Figurka figurka, string nickname)
 		{
-			figurky.Remove(figurka);
+			Console.WriteLine("Odstraňuji figurku " + figurka.VypisNickname());
+			if (!figurka.Oznaceni.StartsWith(nickname[0]))
+			{
+				figurky.Remove(figurka);
+			}
 		}
 
 		public override void Vypis()

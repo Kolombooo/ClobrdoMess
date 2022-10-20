@@ -16,7 +16,7 @@ namespace Clobrdo
 
 		public abstract Figurka DejFigurkuKVyhozeni();
 
-		public abstract void ZvedniFigurku(Figurka figurka);
+		public abstract void ZvedniFigurku(Figurka figurka, string nickname);
 
 		public abstract void Vypis();
 	}

@@ -35,7 +35,7 @@ namespace Clobrdo
 			return figurka;
 		}
 
-		public override void ZvedniFigurku(Figurka figurka)
+		public override void ZvedniFigurku(Figurka figurka, string nickname)
 		{
 			if (this.figurka != figurka)
 			{

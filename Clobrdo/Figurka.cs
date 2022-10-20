@@ -19,5 +19,9 @@ namespace Clobrdo
 		{
 			Console.Write(this.Oznaceni);
 		}
+		public string VypisNickname()
+		{
+			return (this.Oznaceni);
+		}
 	}
 }

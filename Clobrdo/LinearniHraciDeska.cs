@@ -17,6 +17,7 @@ namespace Clobrdo
 		}
 
 		List<Policko> policka = new();
+		protected List<Figurka> figurky = new();
 
 		public LinearniHraciDeska(int pocetPolicek)
 		{
@@ -41,7 +42,7 @@ namespace Clobrdo
 			policka[0].PolozFigurku(figurka);
 		}
 
-		public override bool JeFigurkaVDomecku(Figurka figurka)
+		public override bool  JeFigurkaVDomecku(Figurka figurka)
 		{
 			var domecek = policka.Last();
 			if (domecek is not Domecek)
@@ -64,19 +65,21 @@ namespace Clobrdo
 				return false;
 			}
 
+			pocatecniPolicko.ZvedniFigurku(figurka, "0");
+
 			var cilovePolicko = policka[indexCile];
 			
 			// vyhazování
 			var vyhozenaFigurka = cilovePolicko.DejFigurkuKVyhozeni();
 			if (vyhozenaFigurka != null)
 			{
-				cilovePolicko.ZvedniFigurku(vyhozenaFigurka);
+				cilovePolicko.ZvedniFigurku(vyhozenaFigurka, figurka.VypisNickname());
 				
 				var startovniPolicko = policka.First();
 				startovniPolicko.PolozFigurku(vyhozenaFigurka);
 			}
 
-			pocatecniPolicko.ZvedniFigurku(figurka);
+			//pocatecniPolicko.ZvedniFigurku(figurka, figurka.VypisNickname());
 			cilovePolicko.PolozFigurku(figurka);
 
 			return true;
